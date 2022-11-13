@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="mensaje">
+  <button type="button" id="saludo">Mostrar Saludo</button>
+  
+  <!-- Nuevo botón -->
+  <button type="button" id="mostrarLista">Mostrar Lista de Amigos</button>
+  <button type="button" id="addHijo">Agregar hijo</button>
+
+  <!-- Nueva capa -->
+  <div id="capaResultado"></div>
+
+  <script>
+    let botonSaludo = document.getElementById("saludo");
+    let botonLista = document.getElementById("mostrarLista");
+    let botonAdd = document.getElementById("addHijo");
+
+    let cajaMensaje = document.getElementById("mensaje");
+    let capaResultado = document.getElementById("capaResultado");
+
+    let misAmigos = ["Juan", "Pedro", "Raul", "Miguel", "Carlos"];
+
+    //Evento = respuesta
+    botonSaludo.addEventListener('click', function (){
+      cajaMensaje.value = "José Jacobo";
+    });
+
+    botonLista.addEventListener('click', function (){
+      
+      //Crear la lista de elementos
+      let itemLista = ``;
+      
+      // capaResultado.innerHTML = "<ul><li>Demo</li></ul>"
+      misAmigos.forEach(amigo => {
+        itemLista += `<li>${amigo}</li>`;
+      });
+
+      capaResultado.innerHTML= itemLista;
+    });
+
+    botonAdd.addEventListener('click', function (){
+
+      //Cibstruir un nuevo elemento (NODO) del DOM
+      let parrafo = document.createElement("p");
+      parrafo.innerHTML = "SENATI Ingeniería de Software";
+      capaResultado.appendChild(parrafo);
+    });
+
+  </script>
+</body>
+
+</html>

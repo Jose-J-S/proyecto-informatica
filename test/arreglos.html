@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <button type="button" id="registrar">Registrar</button>
+  <button type="button" id="actualizar">Actualizar</button>
+  <button type="button" id="mostrar">Mostrar objeto</button>
+
+  <script>
+
+    //1. Objeto que contiene los datos
+    let datos = {
+      "apellidos"   : "Francia Minaya",
+      "nombres"     : "Jhon Edward",
+      "edad"      : 38
+    };
+
+    function registrar(){
+      datos['operacion'] = 'registrar';
+    }
+
+    function actualizar(){
+      datos['operacion'] = 'actualizar';
+    }
+
+    function mostrarDatos(){
+      console.log(datos);
+    }
+
+    $("#mostrar").click(mostrarDatos);
+    $("#registrar").click(registrar);
+    $("#actualizar").click(actualizar);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--  Boostrap 4.6 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container mt-4">
+    <!-- ALERTAR -->
+    <button type="button" class="btn btn-primary" id="alerta">Alerta</button>
+    <!-- PREGUNTAR -->
+    <button type="button" class="btn btn-primary" id="pregunta">Pregunta</button>
+    <!-- SOLICITAR (ENTRADA DE DATOS) -->
+    <button type="button" class="btn btn-primary" id="entrada">Entrada</button>
+
+
+    <!-- EJEMPLOS DE SWEET ALERT -->
+    <button type="button" class="btn btn-info" id="sw-alerta-1">Alerta1</button>
+    <button type="button" class="btn btn-info" id="sw-alerta-2">Alerta2</button>
+    <button type="button" class="btn btn-info" id="sw-alerta-3">Alerta3</button>
+    <button type="button" class="btn btn-info" id="sw-pregunta">Pregunta</button>
+
+    <!-- ALERTA QUE NO TIENE CIERRE -->
+    <button type="button" class="btn btn-info" id="sw-toast">Toast</button>
+  </div>
+
+
+  <!-- Libreria jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- SweetAlert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      //Aplicando librería SweetAlert
+      $("#sw-alerta-1").click(function () {
+        Swal.fire("Ventas", "Guardado correctamente", "success");
+      });
+
+      $("#sw-alerta-2").click(function () {
+        Swal.fire({
+          title             : "Ventas",
+          text              : "Guardado correctamente",
+          icon              : "success",
+          confirmButtonText : "Aceptar",
+          showConfirmButton : false,
+          timer             : 1000
+        });
+      });
+
+      $("#sw-alerta-3").click(function (){
+        Swal.fire({
+          title : "Matrícula",
+          // El atributo text no renderiza la etiqueta
+          text :  "Registrado correctamente",
+          icon :  "info",
+          html :  "<strong>Importante: </strong> Se requiere presentar todos los " +
+                  "<span style='color:red'>documentos del alumno</span> " + 
+                  "para su inscripción",
+          confirmButtonText : "Aceptar",
+          footer : "<a href='#'>Ingeniería de Software</a>",
+          position : "bottom-end",
+          allowOutsideClick : false,
+          allowEscapeKey : false
+        });
+      });
+
+      $("#sw-pregunta").click(function (){
+        Swal.fire({
+          title : "Sistema de alquiler",
+          text : "¿Está seguir de proceder?",
+          icon : "question",
+          footer : "Ingeniería de Software con IA",
+          confirmButtonText : "Aceptar",
+          confirmButtonColor : "#2E86C1",
+          cancelButtonColor : "#CB4335",
+          showCancelButton : true,
+          cancelButtonText : "Cancelar"
+        }).then((result) => {
+          if (result.isConfirmed){
+            console.log("El usuario confirmó");
+          }
+        });
+      });
+
+      $("#sw-toast").click(function (){
+        Swal.fire({
+          title : "SENATI",
+          text : "Registro actualizado correctamente",
+          icon : "success",
+          showConfirmButton : false,
+          toast : true,
+          timer : 1500,
+          position : "bottom-end",
+          background : "#D1F2EB"
+        });
+      });
+
+      //Funciones tradicionales de JS
+      $("#alerta").click(function () {
+        alert("Hola mundo");
+      });
+
+      $("#pregunta").click(function () {
+        if (confirm("¿Eres programador?")) {
+          alert("Genial");
+        }
+      });
+
+      $("#entrada").click(function () {
+        let nombre = prompt("Escribe tu nombre");
+        alert("Un gusto saludarte " + nombre);
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
